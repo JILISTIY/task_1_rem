@@ -15,7 +15,7 @@
 #define ServerFifo "server.fifo"
 
 typedef struct {
-    pid_t pid;
+	pid_t pid;
     char name[256];
 }message;
 

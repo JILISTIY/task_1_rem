@@ -17,8 +17,8 @@
 
 
 typedef struct {
-    pid_t pid;
-    char name[256];
+	pid_t pid;
+	char name[256];
 }message;
 
 int main(int argc, char *argv[]) {
