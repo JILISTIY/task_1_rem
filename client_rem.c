@@ -82,13 +82,11 @@ int main(int argc, char *argv[]) {
 	
 	if((close(fh)) < 0) {
 		perror("error closing the client fifo's file");
-		return errno;
 	}
 	
 	
 	if((close(sd)) < 0) {
 		perror("error closing the server fifo's file");
-		return errno;
 	}
 	
 	return 0;
