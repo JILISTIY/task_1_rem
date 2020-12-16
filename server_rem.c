@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 		if ((fh = open(msg.name, O_RDONLY)) < 0) {
 			perror("stderr, Error opening file\n");
 			continue;
-       	}
+		}
 		
 		if ((wr = open(FIFO, O_WRONLY)) < 0) {
 			perror("stderr, opening client fifo\n");
