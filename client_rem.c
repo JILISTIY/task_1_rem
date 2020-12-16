@@ -22,13 +22,12 @@ typedef struct {
 }message;
 
 int main(int argc, char *argv[]) {
-	
+
 	int sd = -1, fh = -1, rd = -1, wr = -1;	
-	
 	char FIFO[64];
 	
 	void *buf = NULL;
-
+	
 	if ((buf = malloc(PAGE_SIZE)) == NULL) {
 		fprintf(stderr, "OOM\n");
 		return -1;
@@ -57,7 +56,6 @@ int main(int argc, char *argv[]) {
 		return errno;
 	}
 
-
 	if ((write(sd, &msg, sizeof(message))) < 0) {
 		perror("error sending message to server");
 		return errno;
@@ -68,9 +66,7 @@ int main(int argc, char *argv[]) {
 		return errno;
 	}
 
-
 	while (1) {
-
 		if ((rd = read(fh, buf, PAGE_SIZE)) < 0) {
 			perror("error reading information from server");
 			return errno;
@@ -83,10 +79,8 @@ int main(int argc, char *argv[]) {
 			perror("parent write");
 			return errno;
 		}
-
 	}
-
-
+	
 	if((close(fh)) < 0) {
         perror("error closing the client fifo's file");
         return errno;

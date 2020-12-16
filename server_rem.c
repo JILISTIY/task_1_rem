@@ -47,10 +47,8 @@ int main(int argc, char *argv[]) {
 		perror("open fifo");
 		return errno;
 	}
-	
 
-	while(1) {      
-            
+	while(1) {            
 		if (read(rd_msg, &msg, sizeof(message)) != sizeof(message)) {
 			fprintf(stderr, "Error reading message\n");
 			continue;                  
@@ -70,7 +68,6 @@ int main(int argc, char *argv[]) {
 
 
 		while (1) {
-
             		if((rd = read(fh, buf, PAGE_SIZE)) < 0) {
                 		perror("reading the file");
                 		break;
@@ -82,9 +79,7 @@ int main(int argc, char *argv[]) {
             		if (write(wr, buf, rd) < 0) {
                 		perror("sending information to client");
                 		return errno;
-            		}
-            		
-
+            		}    
 		}
         	
 		if((close(fh)) < 0) {
@@ -96,7 +91,6 @@ int main(int argc, char *argv[]) {
 		}
   		
 	}
-	
 	
 	if((close(rd_msg)) < 0) {
 		perror("closing the server fifo's file");
