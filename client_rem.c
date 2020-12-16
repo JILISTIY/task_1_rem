@@ -52,13 +52,13 @@ int main(int argc, char *argv[]) {
 	}
 
 
-    if ((sd = open(ServerFifo, O_WRONLY)) < 0) {
+	if ((sd = open(ServerFifo, O_WRONLY)) < 0) {
 		perror("error opening the server fifo");
 		return errno;
 	}
 
 
-    if ((write(sd, &msg, sizeof(message))) < 0) {
+	if ((write(sd, &msg, sizeof(message))) < 0) {
 		perror("error sending message to server");
 		return errno;
 	}
