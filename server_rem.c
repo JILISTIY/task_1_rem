@@ -16,7 +16,7 @@
 
 typedef struct {
 	pid_t pid;
-    char name[256];
+	char name[256];
 }message;
 
 
@@ -86,10 +86,9 @@ int main(int argc, char *argv[]) {
 			perror("closing the file received from client\n");
 		}	
 		
-  		if((close(wr)) < 0) {
+		if((close(wr)) < 0) {
 			perror("closing the client fifo's file");
-		}
-  		
+		}	
 	}
 	
 	if((close(rd_msg)) < 0) {

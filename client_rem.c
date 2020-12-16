@@ -22,7 +22,6 @@ typedef struct {
 }message;
 
 int main(int argc, char *argv[]) {
-
 	int sd = -1, fh = -1, rd = -1, wr = -1;	
 	char FIFO[64];
 	
