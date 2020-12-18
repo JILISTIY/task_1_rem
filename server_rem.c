@@ -20,14 +20,20 @@ typedef struct {
 }message;
 
 
+void remove_fifo() {
+	if(remove(ServerFifo) < 0) {
+		perror("unlinking fifo");
+		exit(-1);
+	}
+	exit(0);
+}
+
 int main(int argc, char *argv[]) {
 	int wr = -1, rd = -1, fh = - 1, rd_msg = -1;
 	
 	char FIFO[64];
 	
 	message msg;
-       
-	signal(SIGINT, SIG_DFL);
              
 	void *buf = NULL; 
 	
@@ -47,7 +53,9 @@ int main(int argc, char *argv[]) {
 		perror("open fifo");
 		return errno;
 	}
-
+	
+	signal(SIGINT, remove_fifo);
+	
 	while(1) {            
 		if (read(rd_msg, &msg, sizeof(message)) != sizeof(message)) {
 			fprintf(stderr, "Error reading message\n");
@@ -95,9 +103,6 @@ int main(int argc, char *argv[]) {
 		perror("closing the server fifo's file");
 	}
 	
-	if (unlink(ServerFifo) < 0) {
-		perror("deleting fifo");
-	}
 	
 	return 0;
 }

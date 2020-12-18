@@ -89,5 +89,7 @@ int main(int argc, char *argv[]) {
 		perror("error closing the server fifo's file");
 	}
 	
+	remove(FIFO);
+	
 	return 0;
 }
